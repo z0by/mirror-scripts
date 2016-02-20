@@ -1,0 +1,73 @@
+mirrors: "mos_ubuntu mos_centos_6 ubuntu centos docker jenkins elasticsearch epel jpackage spacewalk zabbix test"
+mos_ubuntu:
+  name: mos-ubuntu
+  mirrror_source: rsync://obs-1.mirantis.com/mos-ubuntu/
+  exclude:
+  pre_load:
+  past_load:
+mos_centos_6:
+  name: mos-centos-6
+  mirrror_source: rsync://obs-1.mirantis.com/mos-centos-6/
+  exclude:
+  pre_load:
+  past_load:
+ubuntu:
+  name: ubuntu
+  mirrror_source: rsync://mirrors.msk.mirantis.net/mirrors/ubuntu/
+  exclude:
+  pre_load:
+  past_load: scripts/ubuntu/past_download.sh
+centos:
+  name: centos
+  mirrror_source: rsync://mirrors.msk.mirantis.net/mirrors/centos/
+  exclude:
+  pre_load:
+  past_load:
+docker:
+  name: docker
+  mirrror_source: rsync://mirror.yandex.ru/mirrors/docker/
+  exclude: "--exclude .temp --exclude .lastsync --exclude .mirror.yandex.ru"
+  pre_load: 
+  past_load: scripts/docker/past_download.sh
+jenkins:
+  name: jenkins
+  mirrror_source: rsync://mirror.yandex.ru/mirrors/jenkins/debian-stable
+  exclude:
+  pre_load:
+  past_load: scripts/jenkins/past_download.sh
+elasticsearch:
+  name: elasticsearch
+  mirrror_source: /media/mirrors/mirror_update/mirror/packages.elasticsearch.org/elasticsearch/1.3
+  exclude:
+  pre_load: scripts/elasticsearch/pre_download.sh
+  past_load: scripts/elasticsearch/past_download.sh
+epel:
+  name: epel
+  mirrror_source: rsync://mirror.yandex.ru/fedora-epel
+  exclude: "--exclude=i386 --exclude=ppc* --exclude=4* --exclude=5* --exclude=7* --exclude=testing"
+  pre_load:
+  past_load:
+jpackage:
+  name: jpackage
+  mirrror_source: rsync://ftp.heanet.ie/pub/jpackage/5.0
+  exclude: "--exclude=fedora* --exclude=redhat-el*"
+  pre_load:
+  past_load:
+spacewalk:
+  name: spacewalk
+  mirrror_source: /media/mirrors/yum_update/spacewalk
+  exclude:
+  pre_load:
+  past_load:
+zabbix:
+  name: zabbix
+  mirrror_source: /media/mirrors/yum_update/zabbix
+  exclude:
+  pre_load:
+  past_load: 
+test:
+  name: test
+  mirrror_source: /home/uladzimir/Work/mirrors/test
+  exclude: "--exclude=i386 --exclude=ppc* --exclude=4* --exclude=5* --exclude=7* --exclude=testing"
+  pre_load:
+  past_load: test.py
